@@ -78,6 +78,9 @@ SELECT COUNT(*) FROM cartera;
 -- Resultado: 1000 registros cargados correctamente
 ```
 
+> ⚠️ Para el deploy en producción, la base de datos fue migrada a **PostgreSQL en Render** 
+> para permitir el acceso público desde la API.
+
 ## 🚀 API (FastAPI)
 
 Se construyó una API REST con FastAPI para exponer los datos almacenados en PostgreSQL.
