@@ -47,6 +47,39 @@ python rpa/limpieza.py
 Datos abiertos del gobierno de Colombia:
 https://www.datos.gov.co/
 
+🗄️ Base de datos (PostgreSQL)
+
+Se creó una base de datos para almacenar los datos procesados y facilitar su análisis.
+
+Creación de la base de datos:
+CREATE DATABASE cartera_db;
+
+Creación de la tabla:
+CREATE TABLE cartera (
+    id SERIAL PRIMARY KEY,
+    tipo_entidad INTEGER,
+    codigo_entidad INTEGER,
+    nombre_entidad TEXT,
+    fecha_corte DATE NOT NULL,
+    tipo_cartera TEXT NOT NULL,
+    saldo_cartera NUMERIC(18, 2),
+    cartera_vencida NUMERIC(18, 2),
+    clientes_mora INTEGER
+);
+
+Carga de datos:
+
+Se insertaron los datos desde el archivo limpio (cartera_limpia.csv) usando Python.
+
+python db/insert_data.py
+
+Validación
+SELECT COUNT(*) FROM cartera;
+
+Resultado esperado:
+
+1000 registros cargados correctamente
+
 ## 📌 Autor
 
 * John Jairo Cañaveral Gutierrez
