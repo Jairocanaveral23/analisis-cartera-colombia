@@ -24,6 +24,20 @@ def obtener_cartera():
     conn.close()
     return resultado
 
+@app.get("/cartera/entidad/{entidad}")
+def cartera_por_entidad(entidad: str):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT * FROM cartera
+        WHERE LOWER(nombre_entidad) = LOWER(%s)
+    """, (entidad,))
+    columnas = [desc[0] for desc in cur.description]
+    resultado = [dict(zip(columnas, fila)) for fila in cur.fetchall()]
+    cur.close()
+    conn.close()
+    return resultado
+
 @app.get("/cartera/tipo/{tipo}")
 def cartera_por_tipo(tipo: str):
     conn = get_connection()
