@@ -13,6 +13,7 @@ def get_connection():
 def home():
     return {"mensaje": "API de cartera funcionando"}
 
+#Retorna los primeros 100 registros de la cartera.
 @app.get("/cartera")
 def obtener_cartera():
     conn = get_connection()
@@ -38,6 +39,7 @@ def cartera_por_entidad(entidad: str):
     conn.close()
     return resultado
 
+#Filtra la cartera por tipo (ej: 'credito rotativo').
 @app.get("/cartera/tipo/{tipo}")
 def cartera_por_tipo(tipo: str):
     conn = get_connection()

@@ -6,6 +6,8 @@ Este proyecto tiene como objetivo extraer, procesar y analizar datos de cartera 
 
 * Python
 * PostgreSQL
+* FastAPI
+* Render
 * Power BI
 
 ## 📁 Estructura del proyecto
@@ -91,9 +93,14 @@ Se construyó una API REST con FastAPI para exponer los datos almacenados en Pos
 |--------|----------|-------------|
 | GET | `/` | Estado de la API |
 | GET | `/cartera` | Primeros 100 registros |
+| GET | `/cartera/entidad/{entidad}` | Filtrar por entidad |
 | GET | `/cartera/tipo/{tipo}` | Filtrar por tipo de cartera |
 | GET | `/cartera/fecha/{fecha}` | Filtrar por fecha de corte |
 | GET | `/metricas` | Totales generales de cartera |
+
+## ▶️ Ejecutar API localmente
+
+uvicorn api.main:app --reload
 
 ### Documentación interactiva
 
@@ -106,6 +113,17 @@ La API cuenta con documentación interactiva generada automáticamente por FastA
 🌐 https://analisis-cartera-colombia.onrender.com
 
 La API está desplegada en **Render** con base de datos PostgreSQL en la nube, accesible públicamente.
+
+## 📊 Tablero Power BI
+
+Se construyó un tablero de control con las siguientes visualizaciones:
+
+- Evolución de cartera 2015-2020
+- Saldo por entidad financiera
+- Clientes en mora por entidad
+- Filtro interactivo por entidad
+
+Los datos son consumidos directamente desde la API publicada en Render.
 
 ## 📌 Autor
 
